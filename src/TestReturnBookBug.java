@@ -1,3 +1,5 @@
+import java.util.Date;
+
 import library.borrowbook.BorrowBookControl;
 import library.borrowbook.BorrowBookUI;
 import library.entities.*;
@@ -10,6 +12,11 @@ import library.returnbook.ReturnBookUI;
 
 public class TestReturnBookBug {
 	public static void main(String[] args) {
+		
+		CalendarFileHelper calendarHelper = new CalendarFileHelper();
+		ICalendar cal = calendarHelper.loadCalendar();
+		Date currentDate = new Date();
+		cal.setDate(currentDate);
 		Library library = new Library(new BookHelper(), new PatronHelper(), new LoanHelper());
 		
 		// Create our book and patron
@@ -33,11 +40,10 @@ public class TestReturnBookBug {
 		System.out.println("");
 		System.out.println("");
 		
-		CalendarFileHelper calendarHelper = new CalendarFileHelper();
-		ICalendar cal = calendarHelper.loadCalendar();
+
 		
 		//Increment by one day. (Makes it go to the day after the due date for some reason)
-		cal.incrementDate(0);
+		cal.incrementDate(3);
 		
 		library.checkCurrentLoansOverDue();
 		

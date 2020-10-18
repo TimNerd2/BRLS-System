@@ -14,6 +14,9 @@ import library.returnbook.ReturnBookUI;
 public class TestFineCalcBug {
 	
 	public static void main(String[] args) {
+		CalendarFileHelper calendarHelper = new CalendarFileHelper();
+		ICalendar cal = calendarHelper.loadCalendar();
+		Date currentDate = new Date();
 		Library library = new Library(new BookHelper(), new PatronHelper(), new LoanHelper());
 		library.addBook("a", "t", "c1");
 		
@@ -35,11 +38,9 @@ public class TestFineCalcBug {
 		System.out.println("");
 		System.out.println("");
 		
-		CalendarFileHelper calendarHelper = new CalendarFileHelper();
-		ICalendar cal = calendarHelper.loadCalendar();
-		Date currentDate = new Date();
-		//Increment by two days. (This will increment by 2 for some reason)
-		cal.incrementDate(1);
+
+		//Increment by two days past due date.
+		cal.incrementDate(4);
 		
 		library.checkCurrentLoansOverDue();
 		
