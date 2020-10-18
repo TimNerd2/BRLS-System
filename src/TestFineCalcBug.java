@@ -8,11 +8,11 @@ import library.entities.helpers.PatronHelper;
 import library.returnbook.ReturnBookControl;
 import library.returnbook.ReturnBookUI;
 
-public class TestReturnBookBug {
+
+public class TestFineCalcBug {
+	
 	public static void main(String[] args) {
 		Library library = new Library(new BookHelper(), new PatronHelper(), new LoanHelper());
-		
-		// Create our book and patron
 		library.addBook("a", "t", "c1");
 		
 		library.addPatron("j", "t", "test1", 042321);
@@ -36,13 +36,13 @@ public class TestReturnBookBug {
 		CalendarFileHelper calendarHelper = new CalendarFileHelper();
 		ICalendar cal = calendarHelper.loadCalendar();
 		
-		//Increment by one day. (Makes it go to the day after the due date for some reason)
-		cal.incrementDate(0);
+		//Increment by two days. (This will increment by 2 for some reason)
+		cal.incrementDate(1);
 		
 		library.checkCurrentLoansOverDue();
 		
 		System.out.println(cal.getDate());
-		// Execute the return book use case.
+		
 		ReturnBookControl returnBook = new ReturnBookControl(library);
 		ReturnBookUI returnBookUI = new ReturnBookUI(returnBook);
 		
@@ -55,9 +55,6 @@ public class TestReturnBookBug {
 		System.out.println("");
 		System.out.println("");
 		
-		// After all of this has completed, we should test to see if the fine gets added to the patron, if it is still 0, this means the bug is present still.
 		System.out.println(library.getPatronList());
-		
-		
 	}
 }
