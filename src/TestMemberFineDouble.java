@@ -10,9 +10,7 @@ import library.entities.helpers.PatronHelper;
 import library.returnbook.ReturnBookControl;
 import library.returnbook.ReturnBookUI;
 
-
-public class TestFineCalcBug {
-	
+public class TestMemberFineDouble {
 	public static void main(String[] args) {
 		Library library = new Library(new BookHelper(), new PatronHelper(), new LoanHelper());
 		library.addBook("a", "t", "c1");

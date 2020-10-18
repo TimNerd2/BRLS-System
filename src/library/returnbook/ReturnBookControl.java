@@ -50,6 +50,7 @@ public class ReturnBookControl implements IReturnBookControl {
 		double overDueFine = 0.0;
 		if (currentLoan.isOverDue()) {
 			overDueFine = library.calculateOverDueFine(currentLoan);
+			System.out.println("Fine before incur: " + overDueFine);
 			currentLoan.getPatron().incurFine(overDueFine);
 		}
 		returnBookUI.display("Inspecting");
