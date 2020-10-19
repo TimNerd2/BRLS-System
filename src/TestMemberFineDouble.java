@@ -11,6 +11,7 @@ import library.returnbook.ReturnBookControl;
 import library.returnbook.ReturnBookUI;
 
 public class TestMemberFineDouble {
+	
 	public static void main(String[] args) {
 		CalendarFileHelper calendarHelper = new CalendarFileHelper();
 		ICalendar cal = calendarHelper.loadCalendar();
@@ -36,7 +37,7 @@ public class TestMemberFineDouble {
 		System.out.println("");
 		System.out.println("");
 		
-		cal.incrementDate(6);
+		cal.incrementDate(4);
 		
 		library.checkCurrentLoansOverDue();
 		

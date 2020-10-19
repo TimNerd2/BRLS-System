@@ -16,6 +16,7 @@ public class TestReturnBookBug {
 		CalendarFileHelper calendarHelper = new CalendarFileHelper();
 		ICalendar cal = calendarHelper.loadCalendar();
 		Date currentDate = new Date();
+		
 		cal.setDate(currentDate);
 		Library library = new Library(new BookHelper(), new PatronHelper(), new LoanHelper());
 		
